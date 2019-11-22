@@ -1,33 +1,38 @@
-# Teamspeak Query Plugin Framework | Plugin Template
-A small template for any TSQPF plugins.
+# Livestream Manager
+Control where live streaming is allowed and get streamers their own channels.
 
-## 🏷️ Features
-✅ Implements newest compiled API version by default<br/>
-✅ Template code<br/>
-✅ Template plugin.yml configuration<br/>
+## 💡 How does it work?
 
-## 🚀 Getting Started
+Streamers can link their Mixer or Twitch account by using the command "!livestream link <MIXER- / TWITCH-URL>". This will return a code which they have to temporarely paste on their accounts description. After doing that, they need to run "!livestream verify <MIXER- / TWITCH-URL>". This should link their Teamspeak and Mixer / Twitch account.
 
-### 📦 Prerequisites
+Registered Streamers now have the ability to create a Stream-Channel, which can have a higher audio-codec. This can be done by using the command "!livestream start", which will assign the client to a "Streaming" server group which can let other Teamspeak users know that this Streaming is live, followed by "!livestream channel <PASSWORD (optional)>".
 
-#### Java IDE
-- IntelliJ IDEA
-- NetBeans
-- Eclipse
-- Any other IDE developed for Java projects
+By using "!livestream stop", the "Streaming" group will be revoked again.
 
-#### Compiled API Release
+## 🚀 Gettings started
 
-This is already included in the repository be default. You can find it under ```/bin/tsqpf-[version]-[title]-api.jar```.
+Just download the latest release that's compatible with your TSQPF version and copy it into its plugin directory. After you've done that, either reload or restart your framework instance in order to get it loaded and initiated.
 
-### ☕ Developing a Plugin
+## ⚙️ Configuration
 
-Here's a step by step guide on how to get started developing your own plugin for the TSQPF.
+Here's a list of all config keys, value datatypes and a description:
 
-#### Setting up the Project (IntelliJ IDEA)
+KEY | DATATYPE | DESCRIPTION
 
-If you have not cloned this template repository yet, do so by using the following git command somewhere on your computer: ```git clone https://github.com/Teamspeak-Query-Plugin-Framework/tsqpf-plugin-template```
+- **streamerGroup** : [Integer] Server group id of the Streamer group.
+- **streamerLiveGroup** : [Integer] Server group id of the Live / Livestreaming group.
+- **messageStreamerGroupAssigned** : [String] Tells the user that he/she is now a registered streamer.
+- **messageStreamerGroupRevoked** : [String] Tells the user that he/she is no longer a registered streamer.
+- **messageStreamerLiveGroupAssigned** : [String] Tells the user that he/she is now displayed as "Live".
+- **messageStreamerLiveGroupRevoked** : [String] Tells the user that he/she is no longer displayed as "Live".
+- **messageSyntax** : [String] Tells the user how to use the plugin.
 
-Then open your IDE and wait for everything to properly load. After that, create a new project and copy the content of the plugin template reposiotry into the directory of your IDEs project. Then add the API to your project as a library. In IntelliJ, you can do so by going up to File -> Project Settings, then switch to the Libraries tab and import the API jar. If that was successful, you are all set.
 
-For more information on how to develop a plugin, please visit the TSQPF wiki.
+## 📁 Directory Tree
+
+LivestreamManager/<br>
+└── plugin.conf<br>
+
+## 📜 Vortexdata Certification
+
+This plugin is developed by VortexdataNET for the Teamspeak Query Plugin Framework. Every release is being tested for any bugs, its performance or security issues. You are free to use, modify or redistribute the plugin.
